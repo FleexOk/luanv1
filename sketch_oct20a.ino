@@ -17,8 +17,6 @@ Nuñez Lucas
 
 */
 
-// GND = TIERRA; 5V = POSITIVO = VCC;
-
 //Includes del termómetro IR
 #include <Wire.h>
 #include <Adafruit_MLX90614.h>
@@ -38,6 +36,7 @@ const byte engine = 6;
 const byte green = 5;
 const byte red = 4;
 const byte reps = 10;
+
 //Libraries cfig
 TM1637Display display(clkTM, dioTM);
 Adafruit_MLX90614 mlx = Adafruit_MLX90614();
@@ -45,7 +44,7 @@ NewPing sonar(triggerUS, echoUS, 200); //Trigger, Echo y Distancia
 
 int uS, dis;
 
-void setup() //Iniciamos la placa y sus componentes
+void setup() 
 {
     Serial.begin(9600);
     mlx.begin();
@@ -76,16 +75,16 @@ void loop()
             digitalWrite(buz, LOW);
           }
           display.showNumberDec(1111);
-          digitalWrite(red, HIGH); //Led rojo
+          digitalWrite(red, HIGH); 
           for(int i = 0; i < 6; i++){
-            digitalWrite(buz, HIGH); //Buzzer 
+            digitalWrite(buz, HIGH); 
             delay(100);
-            digitalWrite(buz, LOW); //Buzzer 
+            digitalWrite(buz, LOW); 
             delay(50);
           }
           digitalWrite(red, LOW);
         } else {
-          digitalWrite(green, HIGH); //Led verde
+          digitalWrite(green, HIGH); 
           delay(1500);
           digitalWrite(green, LOW);
         }
